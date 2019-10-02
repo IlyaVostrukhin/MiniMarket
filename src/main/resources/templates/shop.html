@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+
+    <title>Мини-маркет</title>
+
+    <link rel="icon" href="https://3.bp.blogspot.com/-bxNMNuCjRUw/WZ1Ef5kwDrI/AAAAAAAAJXc/2BYl6u1wgO81afKDai6Q-DmezMQbIaiuACEwYBhgL/s320/shopping-cart-icon-19.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <div th:replace="~{navigation :: navigation(Shop)}" />
+
+    <h1>Мини-маркет</h1>
+    <span th:if="${products.size() == 0}">Products List is empty</span>
+    <table th:if="${products.size() > 0}" class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <td align="center">Наименование товара</td>
+            <td align="center">Цена</td>
+            <td align="center">Действия</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td width="300" align="center" th:text="${product.title}"/>
+            <td width="300" align="center" th:text="${product.price}"/>
+            <td width="400"><a class="btn btn-secondary" th:href="@{'/details/' + ${product.id}}">Инфо...</a>
+                <a class="btn btn-success" th:href="@{'/cart/add/' + ${product.id}}">Добавить в корзину</a>
+                <a class="btn btn-danger" th:href="@{'/products/delete/' + ${product.id}}">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
