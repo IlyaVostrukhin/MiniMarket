@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="utf-8"/>
@@ -21,14 +21,14 @@
     <table class="table table-hover">
         <thead class="thead-dark">
         <tr>
-            <td>ID товара</td>
+            <td sec:authorize="hasRole('ADMIN')">ID товара</td>
             <td>Наименование товара</td>
             <td>Цена</td>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td th:text="${selectedProduct.id}"/>
+            <td sec:authorize="hasRole('ADMIN')" th:text="${selectedProduct.id}"/>
             <td th:text="${selectedProduct.title}"/>
             <td th:text="${selectedProduct.price}"/>
         </tr>

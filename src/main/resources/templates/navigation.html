@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="utf-8"/>
@@ -20,8 +20,20 @@
                 <li class="nav-item" th:classappend="${activeTab == 'Shop' ? 'active' : ''}">
                     <a class="nav-link" th:href="@{/shop}">Мини-маркет</a>
                 </li>
-                <li class="nav-item" th:classappend="${activeTab == 'Cart' ? 'active' : ''}">
+                <li class="nav-item" sec:authorize="isAuthenticated()"
+                    th:classappend="${activeTab == 'Cart' ? 'active' : ''}">
                     <a class="nav-link" th:href="@{/cart}">Корзина</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                    <a class="nav-link" th:href="@{/admin}">Админка</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <a class="nav-link btn btn-success" th:href="@{/login}">Войти</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" class="btn btn-danger" value="Выйти"/>
+                    </form>
                 </li>
             </ul>
         </div>

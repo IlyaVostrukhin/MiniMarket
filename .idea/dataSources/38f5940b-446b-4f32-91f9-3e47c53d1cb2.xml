@@ -107,8 +107,8 @@
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionTimestamp>2019-09-27.17:16:06.536</IntrospectionTimestamp>
-      <IntrospectionStateNumber>638</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2019-10-10.12:32:38.226</IntrospectionTimestamp>
+      <IntrospectionStateNumber>652</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -163,12 +163,45 @@
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <table id="28" parent="20" name="products">
+    <table id="28" parent="20" name="authorities">
+      <ObjectId>24851</ObjectId>
+      <Owner>root</Owner>
+      <StateNumber>652</StateNumber>
+    </table>
+    <table id="29" parent="20" name="products">
       <ObjectId>24833</ObjectId>
       <Owner>root</Owner>
       <StateNumber>638</StateNumber>
     </table>
-    <column id="29" parent="28" name="id">
+    <table id="30" parent="20" name="users">
+      <ObjectId>24837</ObjectId>
+      <Owner>root</Owner>
+      <StateNumber>652</StateNumber>
+    </table>
+    <column id="31" parent="28" name="username">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>652</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="32" parent="28" name="authority">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>652</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="33" parent="28" name="authorities_username_fkey">
+      <ObjectId>24854</ObjectId>
+      <ColNames>username</ColNames>
+      <RefTableId>24837</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>users</RefTableName>
+      <RefKeyName>users_pkey</RefKeyName>
+      <RefColNames>username</RefColNames>
+    </foreign-key>
+    <column id="34" parent="29" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
@@ -177,17 +210,49 @@
       <TypeId>20</TypeId>
       <SequenceName>products_id_seq</SequenceName>
     </column>
-    <column id="30" parent="28" name="title">
+    <column id="35" parent="29" name="title">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>638</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="31" parent="28" name="price">
+    <column id="36" parent="29" name="price">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>638</StateNumber>
       <TypeId>23</TypeId>
     </column>
+    <column id="37" parent="30" name="username">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>648</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="38" parent="30" name="password">
+      <Position>2</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>648</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="39" parent="30" name="enabled">
+      <Position>3</Position>
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>648</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <index id="40" parent="30" name="users_pkey">
+      <ObjectId>24840</ObjectId>
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="41" parent="30" name="users_pkey">
+      <ObjectId>24841</ObjectId>
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
   </database-model>
 </dataSource>

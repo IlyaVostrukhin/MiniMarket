@@ -21,6 +21,11 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @GetMapping("/shop")
     public String shopPage(Model model) {
         List<Product> products = productService.getAllProducts();
@@ -41,7 +46,7 @@ public class MainController {
     }
 
     @GetMapping("/products/delete/{id}")
-    public String deleteProductById(@PathVariable("id") Long id){
+    public String deleteProductById(@PathVariable("id") Long id) {
         productService.deleteProductById(id);
         return "redirect:/shop";
     }
