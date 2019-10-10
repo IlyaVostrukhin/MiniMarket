@@ -30,9 +30,9 @@
         </thead>
         <tbody>
         <tr th:each="product : ${products}">
-            <td th:text="${product.title}"/>
-            <td th:text="${product.price}"/>
-            <td><a class="btn btn-danger" th:href="@{'/cart/delete/' + ${product.id}}">Удалить из корзины</a></td>
+            <td width="300" align="center" th:text="${product.title}"/>
+            <td width="300" align="center" th:text="${product.price}"/>
+            <td width="400" align="center"><a class="btn btn-danger" th:href="@{'/cart/delete/' + ${product.id}}">Удалить из корзины</a></td>
         </tr>
         </tbody>
     </table>

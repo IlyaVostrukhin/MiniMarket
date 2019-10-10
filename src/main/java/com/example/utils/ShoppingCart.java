@@ -34,8 +34,6 @@ public class ShoppingCart {
     }
 
     public void deleteProductById(Long id) {
-        Product product = productService.getProductById(id);
-        System.out.println(product);
-        products.remove(product);
+        products.remove(productService.getProductById(id));
     }
 }

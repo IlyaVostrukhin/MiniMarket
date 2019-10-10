@@ -31,7 +31,7 @@
         <tr th:each="product : ${products}">
             <td width="300" align="center" th:text="${product.title}"/>
             <td width="300" align="center" th:text="${product.price}"/>
-            <td width="400"><a class="btn btn-secondary" th:href="@{'/details/' + ${product.id}}">Инфо...</a>
+            <td width="400" align="center"><a class="btn btn-secondary" th:href="@{'/details/' + ${product.id}}">Инфо...</a>
                 <a class="btn btn-success" th:href="@{'/cart/add/' + ${product.id}}">Добавить в корзину</a>
                 <a class="btn btn-danger" th:href="@{'/products/delete/' + ${product.id}}">Удалить</a>
             </td>
