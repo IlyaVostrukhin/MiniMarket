@@ -1,5 +1,6 @@
 package com.example.utils;
 
+import com.example.entities.OrderItem;
 import com.example.entities.Product;
 import com.example.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,25 +16,29 @@ import java.util.List;
 @Component
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ShoppingCart {
-    private List<Product> products;
+    private List<OrderItem> items;
 
     @Autowired
     private ProductService productService;
 
-    public List<Product> getProducts() {
-        return products;
+    public List<OrderItem> getItems() {
+        return items;
     }
 
     @PostConstruct
     public void init() {
-        products = new ArrayList<>();
+        items = new ArrayList<>();
     }
 
     public void addProductById(Long id) {
-        products.add(productService.getProductById(id));
+        OrderItem orderItem = new OrderItem();
+        orderItem.setProduct(productService.getProductById(id));
+        items.add(orderItem);
     }
 
     public void deleteProductById(Long id) {
-        products.remove(productService.getProductById(id));
+        OrderItem orderItem = new OrderItem();
+        orderItem.setProduct(productService.getProductById(id));
+        items.remove(orderItem);
     }
 }

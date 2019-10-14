@@ -23,6 +23,7 @@
         <tr>
             <td sec:authorize="hasRole('ADMIN')">ID товара</td>
             <td>Наименование товара</td>
+            <td>Описание</td>
             <td>Цена</td>
         </tr>
         </thead>
@@ -30,6 +31,7 @@
         <tr>
             <td sec:authorize="hasRole('ADMIN')" th:text="${selectedProduct.id}"/>
             <td th:text="${selectedProduct.title}"/>
+            <td th:text="${selectedProduct.description}"/>
             <td th:text="${selectedProduct.price}"/>
         </tr>
         </tbody>

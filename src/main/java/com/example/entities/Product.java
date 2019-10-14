@@ -17,13 +17,17 @@ public class Product {
     @Column(name = "price")
     int price;
 
+    @Column(name = "description")
+    String description;
+
     public Product() {
     }
 
-    public Product(Long id, String title, int price) {
+    public Product(Long id, String title, int price, String description) {
         this.id = id;
         this.title = title;
         this.price = price;
+        this.description = description;
     }
 
     public Long getId() {
@@ -50,6 +54,14 @@ public class Product {
         this.price = price;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -57,12 +69,13 @@ public class Product {
         Product product = (Product) o;
         return price == product.price &&
                 Objects.equals(id, product.id) &&
-                Objects.equals(title, product.title);
+                Objects.equals(title, product.title) &&
+                Objects.equals(description, product.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, price);
+        return Objects.hash(id, title, price, description);
     }
 
     @Override
@@ -71,6 +84,7 @@ public class Product {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", price=" + price +
+                ", description='" + description + '\'' +
                 '}';
     }
 }
